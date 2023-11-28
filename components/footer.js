@@ -19,7 +19,7 @@ export default function Footer() {
               {i18n.footer.read[locale]}
             </a>
             <a
-              href="https://github.com/datocms/nextjs-demo"
+              href="https://welcomehomereferrals.com"
               className="mx-3 font-bold hover:underline"
             >
               {i18n.footer.github[locale]}

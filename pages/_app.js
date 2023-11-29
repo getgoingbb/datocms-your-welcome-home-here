@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { GA_TRACKING_ID, pageview } from '../utils/analytics' // Adjust the import path as necessary
+import { GA_TRACKING_ID, pageview } from '../lib/analytics' // Adjust the import path as necessary
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()

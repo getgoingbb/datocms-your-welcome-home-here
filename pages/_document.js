@@ -1,33 +1,20 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import Head from 'next/head';
-import { GA_TRACKING_ID } from '../path/to/analytics.js';
+import Document, { Html, Main, Head, NextScript } from "next/document";
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Head>
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-      </Head>
-      <Component {...pageProps} />
-    </>
-  );
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <title>My Next.js App</title>
+          <link rel="stylesheet" href="/styles/globals.css" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 
-
-export default MyApp;
+export default MyDocument;

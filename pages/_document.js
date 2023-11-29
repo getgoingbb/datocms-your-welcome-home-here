@@ -29,18 +29,5 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default class MyDocument extends Document {
-  render() {
-    const { lanaguage } = this.props.__NEXT_DATA__.query;
-    return (
-      <Html lang={lanaguage}>
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
+
 export default MyApp;

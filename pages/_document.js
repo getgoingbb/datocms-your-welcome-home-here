@@ -6,6 +6,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+         {/* Example of adding a new script */}
+          <script src="lib/analytics.js" defer></script>
           {/* Existing tags */}
         </Head>
         <body>

@@ -2,21 +2,6 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import Head from 'next/head';
 import { GA_TRACKING_ID } from '../path/to/analytics.js';
 
-export default class MyDocument extends Document {
-  render() {
-    const { lanaguage } = this.props.__NEXT_DATA__.query;
-    return (
-      <Html lang={lanaguage}>
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -44,4 +29,18 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+export default class MyDocument extends Document {
+  render() {
+    const { lanaguage } = this.props.__NEXT_DATA__.query;
+    return (
+      <Html lang={lanaguage}>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
 export default MyApp;

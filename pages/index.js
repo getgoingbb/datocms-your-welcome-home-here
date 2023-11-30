@@ -96,7 +96,9 @@ export default function Index({ subscription }) {
     </div>
   )
 }  
-  
+
+export default Home
+
   return (
     <>
       <Layout preview={subscription.preview}>

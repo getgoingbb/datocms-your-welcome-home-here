@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
-import Script from 'next/script'
 import Container from "../components/container";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
@@ -80,23 +79,10 @@ export default function Index({ subscription }) {
   const morePosts = allPosts.slice(1);
   const metaTags = blog.seo.concat(site.favicon);
 
-
-
   return (
+    <>
       <Layout preview={subscription.preview}>
         <Head>{renderMetaTags(metaTags)}</Head>
-
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'GA_MEASUREMENT_ID');
-        `}
-      </Script>
-
         <Container>
           <LanguageBar />
           <Intro />

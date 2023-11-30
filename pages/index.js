@@ -99,7 +99,6 @@ export default function Index({ subscription }) {
 
 
   return (
-    <>
       <Layout preview={subscription.preview}>
         <Head>{renderMetaTags(metaTags)}</Head>
         <Container>

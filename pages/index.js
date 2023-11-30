@@ -36,7 +36,7 @@ export default function Index({ subscription }) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-        <Container>
+      
           <LanguageBar />
           <Intro />
           {heroPost && (

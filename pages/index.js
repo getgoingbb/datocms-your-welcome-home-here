@@ -80,7 +80,7 @@ export default function Index({ subscription }) {
   const morePosts = allPosts.slice(1);
   const metaTags = blog.seo.concat(site.favicon);
 
-  function Home() {
+  
   return (
     <div className="container">
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from 'next/script'; // Import Script
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Container from "../components/container";
 import HeroPost from "../components/hero-post";
@@ -10,62 +11,8 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import { useRouter } from "next/router";
 import LanguageBar from "../components/language-bar";
 
-
 export async function getStaticProps({preview, locale}) {
-  const formattedLocale = locale.split("-")[0];
-  const graphqlRequest = {
-    query: `
-      {
-        site: _site {
-          favicon: faviconMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        blog {
-          seo: _seoMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 20) {
-          title
-          slug
-          excerpt
-          date
-          coverImage {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-              ...responsiveImageFragment
-            }
-          }
-          author {
-            name
-            picture {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
-            }
-          }
-        }
-      }
-
-      ${metaTagsFragment}
-      ${responsiveImageFragment}
-    `,
-    preview,
-  };
-
-  return {
-    props: {
-      subscription: preview
-        ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
-          }
-        : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
-    },
-  };
+  // ... existing getStaticProps code ...
 }
 
 export default function Index({ subscription }) {
@@ -73,28 +20,28 @@ export default function Index({ subscription }) {
     data: { allPosts, site, blog },
   } = useQuerySubscription(subscription);
 
-  const { locale, locales, asPath } = useRouter().locale;
-
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
-  const metaTags = blog.seo.concat(site.favicon);
+  // ... existing Index component code ...
 
   return (
     <>
       <Layout preview={subscription.preview}>
         <Head>{renderMetaTags(metaTags)}</Head>
+        <Script id="google-analytics">
+          {`
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'G-R1TN5P38SJ', 'auto');
+            ga('send', 'pageview');
+          `}
+        </Script>
         <Container>
           <LanguageBar />
           <Intro />
           {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
+            // ... existing HeroPost component code ...
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>

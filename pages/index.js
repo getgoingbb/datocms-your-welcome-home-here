@@ -85,7 +85,7 @@ export default function Index({ subscription }) {
   return (
       <Layout preview={subscription.preview}>
         <Head>{renderMetaTags(metaTags)}</Head>
-     <div className="container">
+
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />
       <Script id="google-analytics">
         {`
@@ -96,7 +96,7 @@ export default function Index({ subscription }) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-    </div>
+
         <Container>
           <LanguageBar />
           <Intro />

@@ -120,4 +120,3 @@ export default function Index({ subscription }) {
     </>
   );
 }
-export default Home

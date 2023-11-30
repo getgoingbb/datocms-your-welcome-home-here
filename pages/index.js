@@ -80,9 +80,12 @@ export default function Index({ subscription }) {
   const morePosts = allPosts.slice(1);
   const metaTags = blog.seo.concat(site.favicon);
 
-  
+
+
   return (
-    <div className="container">
+      <Layout preview={subscription.preview}>
+        <Head>{renderMetaTags(metaTags)}</Head>
+     <div className="container">
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />
       <Script id="google-analytics">
         {`
@@ -94,13 +97,6 @@ export default function Index({ subscription }) {
         `}
       </Script>
     </div>
-  )
-}  
-
-
-  return (
-      <Layout preview={subscription.preview}>
-        <Head>{renderMetaTags(metaTags)}</Head>
         <Container>
           <LanguageBar />
           <Intro />

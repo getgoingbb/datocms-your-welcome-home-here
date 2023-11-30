@@ -97,7 +97,6 @@ export default function Index({ subscription }) {
   )
 }  
 
-export default Home
 
   return (
     <>
@@ -122,5 +121,4 @@ export default Home
     </>
   );
 }
-
-
+export default Home

@@ -80,6 +80,23 @@ export default function Index({ subscription }) {
   const morePosts = allPosts.slice(1);
   const metaTags = blog.seo.concat(site.favicon);
 
+  function Home() {
+  return (
+    <div className="container">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+      </Script>
+    </div>
+  )
+}  
+  
   return (
     <>
       <Layout preview={subscription.preview}>
@@ -104,20 +121,4 @@ export default function Index({ subscription }) {
   );
 }
 
-function Home() {
-  return (
-    <div className="container">
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-R1TN5P38SJ" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'GA_MEASUREMENT_ID');
-        `}
-      </Script>
-    </div>
-  )
-}
 

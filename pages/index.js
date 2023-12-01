@@ -8,7 +8,6 @@ import MoreStories from "../components/more-stories";
 import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import { useRouter } from "next/router";
-import LanguageBar from "../components/language-bar";
 
 
 export async function getStaticProps({preview, locale}) {
@@ -84,7 +83,6 @@ export default function Index({ subscription }) {
       <Layout preview={subscription.preview}>
         <Head>{renderMetaTags(metaTags)}</Head>
         <Container>
-          <LanguageBar />
           <Intro />
           {heroPost && (
             <HeroPost

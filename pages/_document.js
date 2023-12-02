@@ -7,7 +7,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
          {/* Example of adding a new script */}
-          <script src="../lib/analytics.js"</script>
+          <script src="lib/analytics.js"</script>
           {/* Existing tags */}
         </Head>
         <body>
